@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery AJAX Load Example</title>
+    <!-- Load jQuery from CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script>
+    $(document).ready(function() {
+        $("#btn").click(function() {
+            // Load content from text file and handle errors
+            $('#showinfo').load('/jq/text.txt', function(response, status, xhr) {
+                if (status == "error") {
+                    $('#showinfo').html("Failed to load data. Check file path.");
+                }
+            });
+        });
+    });
+    </script>
+
+    <style>
+        #showinfo {
+            height: 40px;
+            padding: 15px 0 0 10px;
+            margin-bottom: 15px;
+            background-color: #cde;
+            border: 1px solid #aaa;
+        }
+        #btn {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>jAJAX Content Load Demo</h2>
+    <p>Click button to load content from /jq/text.txt file:</p>
+    
+    <!-- Container where loaded content will appear -->
+    <div id="showinfo">SHOW DATA</div>
+    
+    <!-- Trigger button -->
+    <input type="button" id="btn" value="Load Data" />
+
+    <!-- Additional explanation -->
+    <div style="margin-top: 20px; color: #666;">
+        <small>Note: This requires the text.txt file to exist at /jq/text.txt</small>
+    </div>
+</body>
+</html>
